@@ -53,6 +53,7 @@
 .signup-button {
     width: 100%;
     padding: 12px;
+    margin-top: 12px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -70,7 +71,7 @@
     color: #007bff;
     /* display: block; */
     font-size: 1rem;
-    margin-left: 7px;
+    /* margin-left: 7px; */
     margin-bottom: 20px;
     transition: color 0.3s;
 }
@@ -121,5 +122,14 @@
     }
     to {
         transform: scale(1);
+    }
+}
+
+
+/* Responsiveness */
+
+@media only screen and (max-width: 900px){
+    .signup-image{
+        display: none;
     }
 }

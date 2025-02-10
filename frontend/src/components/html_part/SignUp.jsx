@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css_part/signup.css'
+import { Link } from 'react-router-dom';
 
 function SignUp() {
     // const [firstName, setFirstName] = useState();
@@ -50,7 +51,7 @@ function SignUp() {
             <div className="sign-up-form-container">
                 <div>
                     <h1>Create New Account</h1>
-                    <p>Join millions of users taking notes on Bubble</p>
+                    <p>Join millions of users taking notes on Freelancify</p>
                 </div>
                 <form className='edit-form' >
                     <input 
@@ -116,7 +117,11 @@ function SignUp() {
                 <div>
                     <p>
                         Already have an account? 
-                        <a className='login-link' href="index.html">Log in </a>
+                        <br />
+                        {/* <a className='login-link' href="index.html"> */}
+                        <Link className='login-link' to="/login">
+                            Log in 
+                        </Link>
                     </p>
                 </div>
             </div>
