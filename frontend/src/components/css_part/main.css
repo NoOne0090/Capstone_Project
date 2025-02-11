@@ -1,0 +1,9 @@
+.services{
+    margin: 16px 31px;
+}
+
+.display-services{
+    display: flex;
+    /* gap: 16px; */
+    overflow-x: scroll;
+}

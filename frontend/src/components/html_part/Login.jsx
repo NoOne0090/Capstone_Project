@@ -8,22 +8,22 @@ function Login() {
     <div className="signup-body">
       <div class="sign-up-container">
         <section class="sign-up-form-container">
-            <header>
+            <div>
                 <h1>Log In</h1>
                 <p>Millions of users are taking notes on Freelancify</p>
-            </header>
+            </div>
 
             <form className='edit-form'>
               <input 
                 type="email" 
                 placeholder="Email" 
-                value="johnsmith@gmail.com" 
+                // value="johnsmith@gmail.com" 
                 required
               />
               <input 
                 type="password" 
                 placeholder="Password" 
-                value="********" 
+                // value="********" 
                 required
               />
 

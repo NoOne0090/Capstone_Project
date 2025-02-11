@@ -40,10 +40,10 @@ function ResetPassword() {
     <div className="signup-body">
       <div class="sign-up-container">
         <section class="sign-up-form-container">
-            <header>
+            <div>
                 <h1>Reset Password</h1>
                 <p>Enter your email to create new password</p>
-            </header>
+            </div>
             {/* <br /> */}
 
             <form className='edit-form'>

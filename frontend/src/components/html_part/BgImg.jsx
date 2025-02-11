@@ -12,14 +12,22 @@ function BgImg() {
 
         {/* Text Part */}
         <div className="hero-section">
-          <h1>Premium fast food</h1>
-          <p>You don’t have to travel to shop to get an original pizza... We’ll bring it to you!</p>
+          <h1>Turn Your Ideas Into Reality With Our Services</h1>
           <br />
-          <Link to="/pizza">
-            <button>ORDER NOW!</button>
-          </Link>
-        </div>
 
+          <form >
+            <input 
+              className='service-input'
+              type="search" 
+              autoComplete="off"
+              placeholder='Search for any services...'
+            />
+            <Link to="/pizza">
+              <button>Search</button>
+            </Link>
+          </form>
+
+        </div>
       </div>
     </>
   )

@@ -1,12 +1,24 @@
 import React from 'react'
 import BgImg from './BgImg'
+import Services from './Services'
+import '../css_part/main.css'
 
 function Main() {
   return (
     <>
       <BgImg/>
-      
-      <h1>This is main page</h1>
+
+      <br/>  <br/>
+
+      <div className="services">
+        <h1>Popular Services</h1>
+        <br />
+        <div className="display-services">
+          <Services/>
+        </div>
+      </div>
+
+      <br/>  <br/>
     </>
   )
 }
