@@ -2,8 +2,33 @@
     margin: 16px 31px;
 }
 
+/* .services h1{
+    color: #555;
+} */
+
 .display-services{
     display: flex;
-    /* gap: 16px; */
     overflow-x: scroll;
+}
+
+.explore{
+    margin: 16px 31px;
+}
+
+.explore h1{
+    color: #555;
+    padding-left: 111px;
+}
+
+.display-explore{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (max-width: 700px){
+    .explore h1{
+        padding-left: 0px;
+        text-align: center;
+    }
 }

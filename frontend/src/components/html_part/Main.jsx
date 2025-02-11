@@ -2,6 +2,8 @@ import React from 'react'
 import BgImg from './BgImg'
 import Services from './Services'
 import '../css_part/main.css'
+import Description from './Description'
+import Explore from './Explore'
 
 function Main() {
   return (
@@ -19,6 +21,20 @@ function Main() {
       </div>
 
       <br/>  <br/>
+
+      <Description/>
+
+      <br/>  <br/>
+
+      <div className="explore">
+        <h1>Explore the marketplace</h1>
+        <br />
+        <div className="display-explore">
+          <Explore/>
+        </div>
+      </div>
+
+      <br /> <br />
     </>
   )
 }
