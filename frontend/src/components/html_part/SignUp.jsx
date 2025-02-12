@@ -1,48 +1,49 @@
-import React from 'react'
+import React,  { useState } from 'react'
+import axios from 'axios';
 import '../css_part/signup.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {
-    // const [firstName, setFirstName] = useState();
-    // const [lastName, setLastName] = useState();
-    // const [email, setEmail] = useState();
-    // const [password, setPassword] = useState();
-    // const [confirmPassword, setConfirmPassword] = useState('');
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState('');
 
-    // // handling password icon
-    // const [passwordVisible, setPasswordVisible] = useState(false);
-    // const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false);
+    // handling password icon
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false);
 
-    // // handling password confirmation
-    // // const [passwordError, setPasswordError] = useState('');
+    // handling password confirmation
+    // const [passwordError, setPasswordError] = useState('');
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    // const handleSubmit = (e) =>{
-    //     e.preventDefault();
-    //     if(password !== confirmPassword){
-    //         alert("Password is not matching!")
-    //     }
-    //     else{
-    //         axios.post('http://localhost:3500/register', {firstName, lastName, email, password})
-    //         .then((result) => {
-    //             if(result.data.message === "email"){
-    //                 alert("Email already exists!");
-    //             }
-    //             else if(result.data.message === "password"){
-    //                 alert("Password Updated to the existing email!");
-    //                 navigate('/');
-    //             }
-    //             else{
-    //                 alert('Sign Up Successfull!\nRedirecting to Login Page!')
-    //                 navigate('/');
-    //             }
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        if(password !== confirmPassword){
+            alert("Password is not matching!")
+        }
+        else{
+            axios.post('http://localhost:3500/register', {firstName, lastName, email, password})
+            .then((result) => {
+                if(result.data.message === "email"){
+                    alert("Email already exists!");
+                }
+                else if(result.data.message === "password"){
+                    alert("Password Updated to the existing email!");
+                    navigate('/login');
+                }
+                else{
+                    alert('Sign Up Successfull!\nRedirecting to Login Page!')
+                    navigate('/login');
+                }
 
-    //             // console.log(result);
-    //         })
-    //         .catch(error => console.log(error))
-    //     }
-    // }
+                // console.log(result);
+            })
+            .catch(error => console.log(error))
+        }
+    }
 
   return (
     <>
@@ -53,59 +54,59 @@ function SignUp() {
                     <h1>Create New Account</h1>
                     <p>Join millions of users taking notes on Freelancify</p>
                 </div>
-                <form className='edit-form' >
+                <form className='edit-form' onSubmit={handleSubmit}>
                     <input 
                         type="text" 
                         name="signUpFirstName" 
                         placeholder="First Name" 
                         minLength="3" 
                         maxLength="16"
-                        // onChange={(e) => setFirstName(e.target.value)}
+                        onChange={(e) => setFirstName(e.target.value)}
                         required
                     />
                     <input 
                         type="text" 
                         name="signUpLastName" 
                         placeholder="Last Name" 
-                        // onChange={(e) => setLastName(e.target.value)}
+                        onChange={(e) => setLastName(e.target.value)}
                         required 
                     />
                     <input 
                         type="email" 
                         name="signUpEmail"
                         placeholder="Email" 
-                        autoComplete="off"
-                        // onChange={(e) => setEmail(e.target.value)}
+                        autoComplete="email"
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input 
-                        type="password" 
-                        // type={passwordVisible ? "text" : "password"} 
+                        // type="password" 
+                        type={passwordVisible ? "text" : "password"} 
                         name="signUpPassword" 
                         aria-describedby="passwordHelpBlock" 
                         placeholder="Enter password" 
                         minLength="8" 
                         maxLength="20"
                         // value={password}
-                        // onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                         autocomplete="new-password" 
                         required
                     />
-                    {/* <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordVisible(!passwordVisible)}></i> */}
+                    <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordVisible(!passwordVisible)}></i>
 
                     <input 
-                        type="password" 
-                        // type={passwordConfirmVisible ? "text" : "password"}
+                        // type="password" 
+                        type={passwordConfirmVisible ? "text" : "password"}
                         aria-describedby="passwordHelpBlock" 
                         placeholder="Confirm password" 
                         minLength="8" 
                         maxLength="20"
-                        // onChange={(e) => setConfirmPassword(e.target.value)}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         autocomplete="new-password" 
                         required
                     />
 
-                    {/* <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i> */}
+                    <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i>
                     
                     <button className='signup-button' type="submit" name="SignUpSubmit">
                         Create Account
