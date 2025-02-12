@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import '../css_part/signup.css'
+import '../css_part/signup.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ResetPassword() {
     const [email, setEmail] = useState();
@@ -13,23 +15,41 @@ function ResetPassword() {
     const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false);
     const navigate = useNavigate();
 
+    const isStrongPassword = (password) => {
+        const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return strongPasswordRegex.test(password);
+    };
+
     const handleSubmit = (e) =>{
         e.preventDefault();
+
+        if (!isStrongPassword(password)) {
+            toast.error("❌ Weak Password! Must contains 1 uppercase, 1 lowercase, 1 number & 1 special character!");
+            return; 
+        }
+
         if(password !== confirmPassword){
-            alert("Password is not matching!")
+          // alert("Password is not matching!")
+          toast.warning("⚠️ Passwords do not match!"); 
         }
         else{
             axios.post('http://localhost:3500/reset', { email, password})
             .then((result) => {
                 if(result.data.message === "email"){
-                    alert("Email does not exists!");
+                  // alert("Email does not exists!");
+                  toast.info("📧 Email does not exists!");
                 }
                 else if(result.data.message === "same"){
-                    alert("Password is same for the existing email!");
+                  // alert("Password is same for the existing email!");
+                  toast.info("📧 Password is same for the existing email!");
                 }
                 else if(result.data.message === "password"){
-                    alert("Password Updated!");
-                    navigate('/login');
+                    // alert("Password Updated!");
+                    // navigate('/login');
+                    toast.success(" Password Updated!! Redirecting to Login Page!");
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 2500);
                 }
             })
             .catch(error => console.log(error))
@@ -38,6 +58,7 @@ function ResetPassword() {
   return (
     <>
     <div className="signup-body">
+      <ToastContainer position="top-center" autoClose={7000} />
       <div class="sign-up-container">
         <section class="sign-up-form-container">
             <div>

@@ -2,6 +2,8 @@ import React,  { useState } from 'react'
 import axios from 'axios';
 import '../css_part/signup.css'
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
     const [firstName, setFirstName] = useState();
@@ -19,24 +21,48 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    // ✅ Strong password validation function
+    const isStrongPassword = (password) => {
+        const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return strongPasswordRegex.test(password);
+    };
+
     const handleSubmit = (e) =>{
         e.preventDefault();
+
+         // ✅ Check if password meets strength requirements
+         if (!isStrongPassword(password)) {
+            toast.error("❌ Weak Password! Must contains 1 uppercase, 1 lowercase, 1 number & 1 special character!");
+            return; // Stop form submission
+        }
+
+
         if(password !== confirmPassword){
-            alert("Password is not matching!")
+            toast.warning("⚠️ Passwords do not match!");
+            // alert("Password is not matching!")
+        }
+        else if(firstName === lastName){
+            toast.warning("⚠️ Firstname and Lastname are same!");
         }
         else{
             axios.post('http://localhost:3500/register', {firstName, lastName, email, password})
             .then((result) => {
                 if(result.data.message === "email"){
-                    alert("Email already exists!");
+                    // alert("Email already exists!");
+                    toast.info("📧 Email already exists!");
                 }
                 else if(result.data.message === "password"){
-                    alert("Password Updated to the existing email!");
+                    // alert("Password Updated to the existing email!");
+                    toast.warning("Password Updated to the existing email!")
                     navigate('/login');
                 }
                 else{
-                    alert('Sign Up Successfull!\nRedirecting to Login Page!')
-                    navigate('/login');
+                    // alert('Sign Up Successfull!\nRedirecting to Login Page!')
+                    toast.success("✅ Sign Up Successful! Redirecting to Login Page");
+                    // navigate('/login');
+                    setTimeout(() => {
+                        navigate('/home');
+                    }, 2500);
                 }
 
                 // console.log(result);
@@ -48,6 +74,7 @@ function SignUp() {
   return (
     <>
     <div className="signup-body">
+        <ToastContainer position="top-center" autoClose={7000} />
         <div className="sign-up-container">
             <div className="sign-up-form-container">
                 <div>

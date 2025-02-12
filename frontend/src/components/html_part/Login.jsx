@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import '../css_part/signup.css'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
   const [email, setEmail] = useState();
@@ -13,27 +15,38 @@ function Login() {
 
   const handleSubmit = (e) =>{
       e.preventDefault();
+
       axios.post('http://localhost:3500/loginCheck', {email, password})
       .then((result) => {
           console.log(result.data.message);
 
           if(result.data.message === "Login successfull!"){
-              navigate('/home');
-              alert('Login Successfull!\nRedirecting to home page!');
+            // alert('Login Successfull!\nRedirecting to home page!');
+            toast.success(" Login Successful! Redirecting to home page!");
+
+            localStorage.setItem("user", JSON.stringify(result.data.user));
+            
+            setTimeout(() => {
+                navigate('/home');
+            }, 2500);  // Delay of 2 seconds (2000ms)
           }
           else if(result.data.message === "password incorrect"){
-              alert("Password is incorrect!");
+            // alert("Password is incorrect!");
+            toast.warning("⚠️ Passwords is incorrect!");
           }
           else if(result.data.message === "No record found!"){
-              alert("Email does not exists!");
+            // alert("Email does not exists!");
+            toast.warning("Email does not exists!");
           }
       })
       .catch(error => console.log(error))
   }
 
+
   return (
     <>
     <div className="signup-body">
+      <ToastContainer position="top-center" autoClose={7000} />
       <div className="sign-up-container">
         <section className="sign-up-form-container">
             <div>
