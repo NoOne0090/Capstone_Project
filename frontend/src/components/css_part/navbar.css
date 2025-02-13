@@ -70,9 +70,20 @@ header{
     color: rgb(215, 202, 202);
 }
 
+
 .nav-login{
+    display: flex;
     margin: 0px 16px;
 }
+
+.profile-icon{
+    /* width: 26%; */
+    margin-right: 7px;
+}
+
+/* .logout-btn{
+    padding: 0px 7px;
+} */
 
 
 /* Responsiveness */

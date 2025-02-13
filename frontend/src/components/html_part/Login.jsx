@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  // const [loading, setLoading] = useState(false);
 
   // handling password icon
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -15,6 +16,7 @@ function Login() {
 
   const handleSubmit = (e) =>{
       e.preventDefault();
+      // setLoading(true);
 
       axios.post('http://localhost:3500/loginCheck', {email, password})
       .then((result) => {
@@ -40,6 +42,7 @@ function Login() {
           }
       })
       .catch(error => console.log(error))
+      // .finally(() => setLoading(false)); // Stop loading after response
   }
 
 
@@ -82,9 +85,10 @@ function Login() {
                 Forgot password?
               </Link>
               
-              {/* <a href="hero.html"> */}
-                <button className='signup-button' type="submit" name="loginSubmit">Log In</button>
-              {/* </a> */}
+              <button className='signup-button' type="submit" name="loginSubmit">Log In</button>
+              {/* <button className='signup-button' type="submit" disabled={loading}>
+                {loading ? "Logging in..." : "Log In"}
+              </button> */}
             </form>
 
 

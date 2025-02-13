@@ -8,6 +8,7 @@ import Login from './components/html_part/Login';
 import Navbar from './components/html_part/Navbar';
 import Footer from './components/html_part/Footer';
 import ResetPassword from './components/html_part/ResetPassword';
+import Profile from './components/html_part/Profile';
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/reset' element={<ResetPassword/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
 
 
