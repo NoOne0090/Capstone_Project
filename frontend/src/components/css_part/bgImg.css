@@ -69,7 +69,8 @@
 }
 
 .hero-section button:hover{
-    background-color: rgb(8, 78, 8);
+    /* background-color: rgb(8, 78, 8); */
+    background-color: rgb(17 130 77);
 }
 
 /* For Responsiveness */

@@ -65,6 +65,28 @@
     width: 65%;
 }
 
+.profile-logout-button{
+    margin-top: 65px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-logout-button button{
+    padding: 12px;
+    width: 35%;
+    border-radius: 11px;
+    border: none;
+    background-color: rgb(253, 43, 43);
+    color: white;
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.profile-logout-button button:hover{
+    background-color: rgb(161, 29, 29);
+}
+
 /* End */
 
 /* Main */

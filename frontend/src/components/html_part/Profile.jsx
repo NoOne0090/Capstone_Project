@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react';
 import '../css_part/profile.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Profile() {
 
@@ -13,13 +13,20 @@ function Profile() {
             setUser(JSON.parse(loggedInUser));
         } 
         else {
-            navigate("/login"); // Redirect if not logged in
+            // navigate("/login"); // Redirect if not logged in
+            navigate("/home"); // Redirect if not logged in
         }
     }, [navigate]);
 
     if (!user) {
         return <p>Loading profile...</p>;
     }
+
+    const handleLogout = () => {
+        localStorage.removeItem("user"); // Clear user data
+        setUser(null); // Reset state
+        window.location.reload(); // Refresh page to reflect changes
+    };
 
   return (
     <>
@@ -39,12 +46,15 @@ function Profile() {
 
             <div className="sidenav-url">
                 <div className="url">
-                    <a href="#profile" className="active" style={{marginLeft: "17%"}}>Profile</a>
+                    <Link to="/profile" className="active" style={{marginLeft: "17%"}}>Profile</Link>
                     <hr align="center"/>
                 </div>
                 <div className="url">
-                    <a href="#settings">Edit</a>
+                    <Link to="/profile">Edit</Link>
                     <hr align="center"/>
+                </div>
+                <div className="profile-logout-button">
+                    <button onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
         </div>

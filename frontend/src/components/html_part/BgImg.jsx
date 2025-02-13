@@ -22,7 +22,7 @@ function BgImg() {
               autoComplete="off"
               placeholder='Search for any services...'
             />
-            <Link to="/pizza">
+            <Link to="/">
               <button>Search</button>
             </Link>
           </form>
