@@ -51,7 +51,7 @@ function Login() {
     <div className="signup-body">
       <ToastContainer position="top-center" autoClose={7000} />
       <div className="sign-up-container">
-        <section className="sign-up-form-container">
+        <div className="sign-up-form-container">
             <div>
                 <h1>Log In</h1>
                 <p>Millions of users are taking notes on Freelancify</p>
@@ -74,12 +74,15 @@ function Login() {
                 // autoComplete="new-password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                style={{marginBottom: '-11px'}}
               />
-              <i 
-                  className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`}
-                  onClick={() => setPasswordVisible(!passwordVisible)}
-              >
-              </i>
+
+              <div style={{display:'flex', justifyContent: 'end'}}>
+                <i 
+                    className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`}
+                    onClick={() => setPasswordVisible(!passwordVisible)}>
+                </i>
+              </div>
 
               <Link className='login-link' to="/reset">
                 Forgot password?
@@ -99,11 +102,11 @@ function Login() {
                   <Link className='login-link' to="/signup" style={{marginLeft: '7px'}}>Create a new account</Link>
                 </p>
             </div>
-        </section>
-
-        <div className="signup-image">
-            <img src="" alt="Error"/>
         </div>
+
+        {/* <div className="signup-image">
+            <img src="" alt="Error"/>
+        </div> */}
       </div>
     </div>
     </>

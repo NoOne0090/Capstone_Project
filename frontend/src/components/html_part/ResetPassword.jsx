@@ -80,30 +80,36 @@ function ResetPassword() {
                 type={passwordVisible ? "text" : "password"} 
                 name="signUpPassword" 
                 aria-describedby="passwordHelpBlock" 
-                placeholder="New password" 
+                placeholder="New Password" 
                 minLength="8" 
                 maxLength="20"
                 // value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autocomplete="new-password" 
                 required
+                style={{marginBottom: '-11px'}}
               />
-              <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`}
-                onClick={() => setPasswordVisible(!passwordVisible)}
+              <div style={{display:'flex', justifyContent: 'end'}}>
+                <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`}
+                  onClick={() => setPasswordVisible(!passwordVisible)}
                 >
-              </i>
+                </i>
+              </div>
               <input 
                 // type="password" 
                 type={passwordConfirmVisible ? "text" : "password"}
                 aria-describedby="passwordHelpBlock" 
-                placeholder="Confirm password" 
+                placeholder="Confirm Password" 
                 minLength="8" 
                 maxLength="20"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 autocomplete="new-password" 
                 required
+                style={{marginBottom: '-11px'}}
               />
-              <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i>
+              <div style={{display:'flex', justifyContent: 'end'}}>
+                <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i>
+              </div>
 
               
               {/* <a href="hero.html"> */}
@@ -124,9 +130,9 @@ function ResetPassword() {
             </div>
         </section>
 
-        <div class="signup-image">
+        {/* <div class="signup-image">
             <img src="" alt="Error"/>
-        </div>
+        </div> */}
       </div>
     </div>
     </>

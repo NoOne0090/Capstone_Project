@@ -4,6 +4,7 @@ import Services from './Services'
 import '../css_part/main.css'
 import Description from './Description'
 import Explore from './Explore'
+import Description2 from './Description2'
 
 function Main() {
   return (
@@ -34,6 +35,10 @@ function Main() {
         </div>
       </div>
 
+      <br /> <br />
+
+      <Description2/>
+      
       <br /> <br />
     </>
   )

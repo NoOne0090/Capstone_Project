@@ -111,29 +111,36 @@ function SignUp() {
                         type={passwordVisible ? "text" : "password"} 
                         name="signUpPassword" 
                         aria-describedby="passwordHelpBlock" 
-                        placeholder="Enter password" 
+                        placeholder="Enter Password" 
                         minLength="8" 
                         maxLength="20"
                         // value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         autocomplete="new-password" 
                         required
-                    />
-                    <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordVisible(!passwordVisible)}></i>
+                        style={{marginBottom: '-11px'}}
+                        />
+                    <div style={{display:'flex', justifyContent: 'end'}}>
+                        <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`} style={{bottom: '12px'}} onClick={() => setPasswordVisible(!passwordVisible)}></i>
+                    </div>
 
                     <input 
                         // type="password" 
                         type={passwordConfirmVisible ? "text" : "password"}
                         aria-describedby="passwordHelpBlock" 
-                        placeholder="Confirm password" 
+                        placeholder="Confirm Password" 
                         minLength="8" 
                         maxLength="20"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         autocomplete="new-password" 
                         required
+                        style={{marginBottom: '-11px'}}
                     />
-
-                    <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i>
+                    
+                    <div style={{display:'flex', justifyContent: 'end'}}>
+                        <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i>
+                    </div>
+                    {/* <br /> */}
                     
                     <button className='signup-button' type="submit" name="SignUpSubmit">
                         Create Account
@@ -154,9 +161,9 @@ function SignUp() {
                 </div>
             </div>
 
-            <div className="signup-image">
+            {/* <div className="signup-image">
                 <img src="" alt="Error"/>
-            </div>
+            </div> */}
         </div>
     </div>
     </>
