@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function SignUp() {
+function SignUp({ setIsModalOpen, setActiveForm }) {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
@@ -39,7 +39,6 @@ function SignUp() {
 
         if(password !== confirmPassword){
             toast.warning("⚠️ Passwords do not match!");
-            // alert("Password is not matching!")
         }
         else if(firstName === lastName){
             toast.warning("⚠️ Firstname and Lastname are same!");
@@ -48,20 +47,18 @@ function SignUp() {
             axios.post('http://localhost:3500/register', {firstName, lastName, email, password})
             .then((result) => {
                 if(result.data.message === "email"){
-                    // alert("Email already exists!");
                     toast.info("📧 Email already exists!");
                 }
                 else if(result.data.message === "password"){
-                    // alert("Password Updated to the existing email!");
                     toast.warning("Password Updated to the existing email!")
                     navigate('/login');
                 }
                 else{
-                    // alert('Sign Up Successfull!\nRedirecting to Login Page!')
                     toast.success("✅ Sign Up Successful! Redirecting to Login Page");
                     // navigate('/login');
                     setTimeout(() => {
-                        navigate('/home');
+                        setIsModalOpen(false)
+                        // navigate('/home');
                     }, 2500);
                 }
 
@@ -73,12 +70,19 @@ function SignUp() {
 
   return (
     <>
-    <div className="signup-body">
         <ToastContainer position="top-center" autoClose={7000} />
         <div className="sign-up-container">
             <div className="sign-up-form-container">
                 <div>
-                    <h1>Create New Account</h1>
+                    <div style={{display:'flex', justifyContent: 'space-between', alignItems:'center'}}>
+                        <h1>Create New Account</h1>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="black" style={{cursor:'pointer'}} class="bi bi-x" viewBox="0 0 16 16" onClick={() => setIsModalOpen(false)}>
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+
                     <p>Join millions of users taking notes on Freelancify</p>
                 </div>
                 <form className='edit-form' onSubmit={handleSubmit}>
@@ -107,25 +111,22 @@ function SignUp() {
                         required
                     />
                     <input 
-                        // type="password" 
                         type={passwordVisible ? "text" : "password"} 
                         name="signUpPassword" 
                         aria-describedby="passwordHelpBlock" 
                         placeholder="Enter Password" 
                         minLength="8" 
                         maxLength="20"
-                        // value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         autocomplete="new-password" 
                         required
-                        style={{marginBottom: '-11px'}}
-                        />
-                    <div style={{display:'flex', justifyContent: 'end'}}>
-                        <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`} style={{bottom: '12px'}} onClick={() => setPasswordVisible(!passwordVisible)}></i>
+                        // style={{marginBottom: '-12px'}}
+                    />
+                    <div style={{display:'flex', justifyContent: 'end', marginBottom: '-27px'}}>
+                        <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`} style={{bottom: '32px'}} onClick={() => setPasswordVisible(!passwordVisible)}></i>
                     </div>
 
                     <input 
-                        // type="password" 
                         type={passwordConfirmVisible ? "text" : "password"}
                         aria-describedby="passwordHelpBlock" 
                         placeholder="Confirm Password" 
@@ -140,7 +141,6 @@ function SignUp() {
                     <div style={{display:'flex', justifyContent: 'end'}}>
                         <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i>
                     </div>
-                    {/* <br /> */}
                     
                     <button className='signup-button' type="submit" name="SignUpSubmit">
                         Create Account
@@ -153,8 +153,8 @@ function SignUp() {
                     <p>
                         Already have an account? 
                         <br />
-                        {/* <a className='login-link' href="index.html"> */}
-                        <Link className='login-link' to="/login">
+                        {/* <Link className='login-link' to="/login"> */}
+                        <Link className='login-link' onClick={() => setActiveForm('login')}>
                             Log in 
                         </Link>
                     </p>
@@ -165,7 +165,6 @@ function SignUp() {
                 <img src="" alt="Error"/>
             </div> */}
         </div>
-    </div>
     </>
   )
 }

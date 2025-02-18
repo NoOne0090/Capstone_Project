@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import '../css_part/navbar.css';
+import Login from './Login';
+import Modal from './Modal';
 
 function Navbar() {
     const location = useLocation();
     const [scrolled, setScrolled] = useState(false);
     const [user, setUser] = useState(null); // Store logged-in user info
+    
+    // Modal Rendering
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [activeForm, setActiveForm] = useState('login'); 
+
     useEffect(() => {
       const loggedInUser = localStorage.getItem("user");
       if (loggedInUser) {
-          setUser(JSON.parse(loggedInUser)); // Parse user data
+        setUser(JSON.parse(loggedInUser)); // Parse user data
       }
     }, []);
     
@@ -74,7 +81,13 @@ function Navbar() {
                         {/* <button onClick={handleLogout} className="logout-btn">Logout</button> */}
                       </>
                     ) : (
-                        <Link to="/login">Log In</Link>
+                        // <Link to="/login">Log In</Link>
+                        <>
+                          <Link to="/" onClick={() => setIsModalOpen(true)}>
+                            Login
+                          </Link>
+                          <Login isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+                        </>
                     )}
                   </div>
                 </div>
@@ -131,7 +144,22 @@ function Navbar() {
                       {/* <button onClick={handleLogout} className="logout-btn">Logout</button> */}
                     </>
                   ) : (
-                      <Link to="/login">Log In</Link>
+                      // <Link to="/login">Log In</Link>
+                      <>
+                        <Link onClick={() => { setIsModalOpen(true); setActiveForm('login'); }}>
+                          Login
+                        </Link>
+                        {/* Modal Component */}
+                        {isModalOpen && (
+                          <Modal 
+                            isModalOpen={isModalOpen} 
+                            setIsModalOpen={setIsModalOpen} 
+                            activeForm={activeForm} 
+                            setActiveForm={setActiveForm} 
+                          />
+                        )}
+                        {/* <Login isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} /> */}
+                      </>
                   )}
                 </div>
             </div>

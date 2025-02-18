@@ -12,28 +12,28 @@ import Profile from './components/html_part/Profile';
 
 function App() {
   const location = useLocation();
-  const handleSignUp = location.pathname !== '/signup';
-  const handlelogin = location.pathname !== '/login';
-  const handleResetPassword = location.pathname !== '/reset';
+  // const handleSignUp = location.pathname !== '/signup';
+  // const handlelogin = location.pathname !== '/login';
+  // const handleResetPassword = location.pathname !== '/reset';
 
   return (
     <>  
-      {handleSignUp && handlelogin && handleResetPassword && <Navbar/>}
-
+      {/* {handleSignUp && handlelogin && handleResetPassword && <Navbar/>} */}
+      <Navbar/>
 
       <ScrollToTop/>
 
       <Routes>
         <Route path='/' element={<Main/>}/>
         <Route path='/home' element={<Main/>}/>
-        <Route path='/signup' element={<SignUp/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/reset' element={<ResetPassword/>}/>
+        {/* <Route path='/signup' element={<SignUp/>}/> */}
+        {/* <Route path='/login' element={<Login/>}/> */}
+        {/* <Route path='/reset' element={<ResetPassword/>}/> */}
         <Route path='/profile' element={<Profile/>}/>
       </Routes>
 
-
-      {handleSignUp && handlelogin && handleResetPassword && <Footer/>}
+      <Footer/>
+      {/* {handleSignUp && handlelogin && handleResetPassword && <Footer/>} */}
     </>
   );
 }

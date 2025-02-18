@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import '../css_part/signup.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function ResetPassword() {
+function ResetPassword({ setIsModalOpen, setActiveForm }) {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -13,7 +13,7 @@ function ResetPassword() {
     // handling password icon
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const isStrongPassword = (password) => {
         const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -29,26 +29,23 @@ function ResetPassword() {
         }
 
         if(password !== confirmPassword){
-          // alert("Password is not matching!")
           toast.warning("⚠️ Passwords do not match!"); 
         }
         else{
             axios.post('http://localhost:3500/reset', { email, password})
             .then((result) => {
                 if(result.data.message === "email"){
-                  // alert("Email does not exists!");
                   toast.info("📧 Email does not exists!");
                 }
                 else if(result.data.message === "same"){
-                  // alert("Password is same for the existing email!");
                   toast.info("📧 Password is same for the existing email!");
                 }
                 else if(result.data.message === "password"){
-                    // alert("Password Updated!");
-                    // navigate('/login');
                     toast.success(" Password Updated!! Redirecting to Login Page!");
                     setTimeout(() => {
-                        navigate('/login');
+                        // setIsModalOpen(false);
+                        setActiveForm('login');
+                        // navigate('/login');
                     }, 2500);
                 }
             })
@@ -57,15 +54,20 @@ function ResetPassword() {
     }
   return (
     <>
-    <div className="signup-body">
       <ToastContainer position="top-center" autoClose={7000} />
       <div class="sign-up-container">
-        <section class="sign-up-form-container">
+        <div class="sign-up-form-container">
             <div>
-                <h1>Reset Password</h1>
-                <p>Enter your email to create new password</p>
+              <div style={{display:'flex', justifyContent: 'space-between', alignItems:'center'}}>
+                  <h1>Reset Password</h1>
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="black" style={{cursor:'pointer'}} class="bi bi-x" viewBox="0 0 16 16" onClick={() => setIsModalOpen(false)}>
+                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                      </svg>
+                  </div>
+              </div>
+              <p>Enter your email to create new password</p>
             </div>
-            {/* <br /> */}
 
             <form className='edit-form' onSubmit={handleSubmit}>
               <input 
@@ -76,22 +78,20 @@ function ResetPassword() {
                 required
               />
               <input 
-                // type="password" 
                 type={passwordVisible ? "text" : "password"} 
                 name="signUpPassword" 
                 aria-describedby="passwordHelpBlock" 
                 placeholder="New Password" 
                 minLength="8" 
                 maxLength="20"
-                // value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autocomplete="new-password" 
                 required
-                style={{marginBottom: '-11px'}}
+                // style={{marginBottom: '-12px'}}
               />
-              <div style={{display:'flex', justifyContent: 'end'}}>
+              <div style={{display:'flex', justifyContent: 'end', marginBottom: '-27px'}}>
                 <i className={`bx ${passwordVisible ? "bx-show" : "bx-hide"} eye-icon`}
-                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  style={{bottom: '31px'}} onClick={() => setPasswordVisible(!passwordVisible)}
                 >
                 </i>
               </div>
@@ -111,30 +111,26 @@ function ResetPassword() {
                 <i className={`bx ${passwordConfirmVisible ? "bx-show" : "bx-hide"} eye-icon`} onClick={() => setPasswordConfirmVisible(!passwordConfirmVisible)}></i>
               </div>
 
-              
-              {/* <a href="hero.html"> */}
-                <button className='signup-button' type="submit" name="loginSubmit">Reset Password</button>
-              {/* </a> */}
+              <button className='signup-button' type="submit" name="loginSubmit">Reset Password</button>
             </form>
-
 
             <br />
 
             <div>
                 <p>Remembered your password?
                     <br />
-                    <Link className='login-link' to="/login">
+                    {/* <Link className='login-link' to="/login"> */}
+                    <Link className='login-link' onClick={() => setActiveForm('login')}>
                         Log In
                     </Link>
                 </p>
             </div>
-        </section>
+        </div>
 
         {/* <div class="signup-image">
             <img src="" alt="Error"/>
         </div> */}
       </div>
-    </div>
     </>
   )
 }

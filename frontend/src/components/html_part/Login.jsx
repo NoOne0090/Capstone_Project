@@ -1,18 +1,25 @@
 import React, { useState } from 'react'
 import '../css_part/signup.css'
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import SignUp from './SignUp';
 
-function Login() {
+function Login({ setIsModalOpen, setActiveForm }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  // const location = useLocation();
   // const [loading, setLoading] = useState(false);
+  // const [modal, setModal] = useState(isModalOpen);
+
+  // useEffect(() => {
+  //   setModal(isModalOpen);
+  // }, [isModalOpen]);
 
   // handling password icon
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = (e) =>{
       e.preventDefault();
@@ -23,21 +30,20 @@ function Login() {
           console.log(result.data.message);
 
           if(result.data.message === "Login successfull!"){
-            // alert('Login Successfull!\nRedirecting to home page!');
             toast.success(" Login Successful! Redirecting to home page!");
 
             localStorage.setItem("user", JSON.stringify(result.data.user));
             
             setTimeout(() => {
-                navigate('/home');
+              setIsModalOpen(false);
+              // navigate('/home');
+              window.location.reload();
             }, 2500);  // Delay of 2 seconds (2000ms)
           }
           else if(result.data.message === "password incorrect"){
-            // alert("Password is incorrect!");
             toast.warning("⚠️ Passwords is incorrect!");
           }
           else if(result.data.message === "No record found!"){
-            // alert("Email does not exists!");
             toast.warning("Email does not exists!");
           }
       })
@@ -45,19 +51,30 @@ function Login() {
       // .finally(() => setLoading(false)); // Stop loading after response
   }
 
+  // const handleCross = () => {
+  //   // setModal(false);
+  //   // isModalOpen = false;
+  //   window.location.reload();
+  // }
 
   return (
     <>
-    <div className="signup-body">
       <ToastContainer position="top-center" autoClose={7000} />
       <div className="sign-up-container">
         <div className="sign-up-form-container">
             <div>
-                <h1>Log In</h1>
+                <div style={{display:'flex', justifyContent: 'space-between', alignItems:'center'}}>
+                  <h1>Log In</h1>
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="black" style={{cursor:'pointer'}} class="bi bi-x" viewBox="0 0 16 16" onClick={() => setIsModalOpen(false)}>
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                  </div>
+                </div>
                 <p>Millions of users are taking notes on Freelancify</p>
             </div>
 
-            <form  className='edit-form' onSubmit={handleSubmit}>
+            <form className='edit-form' onSubmit={handleSubmit}>
               <input 
                 type="email" 
                 name="loginUserEmail" 
@@ -84,7 +101,8 @@ function Login() {
                 </i>
               </div>
 
-              <Link className='login-link' to="/reset">
+              {/* <Link className='login-link' to="/reset"> */}
+              <Link className='login-link' onClick={() => setActiveForm('reset')}>
                 Forgot password?
               </Link>
               
@@ -99,7 +117,11 @@ function Login() {
 
             <div>
                 <p>Don't have an account? 
-                  <Link className='login-link' to="/signup" style={{marginLeft: '7px'}}>Create a new account</Link>
+                  {/* <Link className='login-link' to="/" onClick={() => setIsModalOpen(true)} style={{marginLeft: '7px'}}> */}
+                  <Link className='login-link' onClick={() => setActiveForm('signup')} style={{marginLeft: '7px'}}>
+                    Create a new account
+                  </Link>
+                  {/* <SignUp isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/> */}
                 </p>
             </div>
         </div>
@@ -108,7 +130,6 @@ function Login() {
             <img src="" alt="Error"/>
         </div> */}
       </div>
-    </div>
     </>
   )
 }

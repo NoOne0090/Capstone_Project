@@ -19,7 +19,8 @@ function Profile() {
     }, [navigate]);
 
     if (!user) {
-        return <p>Loading profile...</p>;
+        // return <p>Loading profile...</p>;
+        return <p>Rerendering to home page...</p>;
     }
 
     const handleLogout = () => {
