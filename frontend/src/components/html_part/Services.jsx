@@ -7,14 +7,14 @@ function Services() {
   return (
     <>
         {services.map(key => (
-            <div class="card" style={{ backgroundImage: `url(${key.image})`}}>
-                <div class="overlay"></div>
+            <div className="card" style={{ backgroundImage: `url(${key.image})`}}>
+                <div className="overlay"></div>
                 
-                <div class="content">
-                    <h2 class="category">
+                <div className="content">
+                    <h2 className="category">
                         {key.category}
                     </h2>
-                    <p class="tagline">
+                    <p className="tagline">
                         {key.tagline}
                     </p>
                 </div>

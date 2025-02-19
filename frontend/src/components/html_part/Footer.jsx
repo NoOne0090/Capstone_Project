@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../css_part/footer.css'
 
 function Footer() {
@@ -9,33 +10,33 @@ function Footer() {
           <div className="footer-col">
             <h4>Info</h4>
             <ul className="links">
-              <li><a href="/home">Home</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/service">Services</a></li>
-              <li><a href="/contact">Contact Us</a></li>
-              <li><a href="/postjob">Post Job</a></li>
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/service">Services</Link></li>
+              <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/postjob">Post Job</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Explore</h4>
             <ul className="links">
-              <li><a href="/home/webDeveloper">Web Developer</a></li>
-              <li><a href="/home/logoDesign">Logo Designs</a></li>
-              <li><a href="/home/graphicDesign">Graphic Design</a></li>
-              <li><a href="/home/webDeveloper">Web Design</a></li>
-              <li><a href="/home/appDeveloper">App Developer</a></li>
-              <li><a href="/home/dataScientist">Data Scientists</a></li>
+              <li><Link to="/home/webDeveloper">Web Developer</Link></li>
+              <li><Link to="/home/logoDesign">Logo Designs</Link></li>
+              <li><Link to="/home/graphicDesign">Graphic Design</Link></li>
+              <li><Link to="/home/webDeveloper">Web Design</Link></li>
+              <li><Link to="/home/appDeveloper">App Developer</Link></li>
+              <li><Link to="/home/dataScientist">Data Scientists</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Legal</h4>
             <ul className="links">
-              <li><a href="/home">Customer Agreement</a></li>
-              <li><a href="/home">Privacy Policy</a></li>
-              <li><a href="/home">GDPR</a></li>
-              <li><a href="/home">Security</a></li>
-              <li><a href="/home">Testimonials</a></li>
-              <li><a href="/home">Media Kit</a></li>
+              <li><Link to="/home">Customer Agreement</Link></li>
+              <li><Link to="/home">Privacy Policy</Link></li>
+              <li><Link to="/home">GDPR</Link></li>
+              <li><Link to="/home">Security</Link></li>
+              <li><Link to="/home">Testimonials</Link></li>
+              <li><Link to="/home">Media Kit</Link></li>
             </ul>
           </div>
           <div className="footer-col">

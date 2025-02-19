@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import '../css_part/navbar.css';
-import Login from './Login';
+// import Login from './Login';
 import Modal from './Modal';
 
 function Navbar() {
@@ -83,10 +83,10 @@ function Navbar() {
                     ) : (
                         // <Link to="/login">Log In</Link>
                         <>
-                          <Link to="/" onClick={() => setIsModalOpen(true)}>
+                          {/* <Link to="/" onClick={() => setIsModalOpen(true)}> */}
+                          <Link onClick={() => { setIsModalOpen(true); setActiveForm('login'); }}>
                             Login
                           </Link>
-                          <Login isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
                         </>
                     )}
                   </div>
@@ -149,21 +149,21 @@ function Navbar() {
                         <Link onClick={() => { setIsModalOpen(true); setActiveForm('login'); }}>
                           Login
                         </Link>
-                        {/* Modal Component */}
-                        {isModalOpen && (
-                          <Modal 
-                            isModalOpen={isModalOpen} 
-                            setIsModalOpen={setIsModalOpen} 
-                            activeForm={activeForm} 
-                            setActiveForm={setActiveForm} 
-                          />
-                        )}
                         {/* <Login isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} /> */}
                       </>
                   )}
                 </div>
             </div>
 
+            {/* Modal Component */}
+            {isModalOpen && (
+              <Modal 
+                isModalOpen={isModalOpen} 
+                setIsModalOpen={setIsModalOpen} 
+                activeForm={activeForm} 
+                setActiveForm={setActiveForm} 
+              />
+            )}
         </div>
 
       </header>
