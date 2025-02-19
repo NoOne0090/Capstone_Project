@@ -1,0 +1,98 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 21px;
+  /* background-color: #f1f1f1; */
+  background-color: white;
+  min-width: 116px;
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+  box-shadow: 0px 0px 7px black;
+  /* border: 1px solid gray; */
+  border-radius: 11px;
+  z-index: 99;
+}
+
+/* .dropdown-content::before{
+    content: '';
+    position: absolute;
+    top: -0.7rem;
+    right: 1.1rem;
+    width: 21px;
+    height: 21px;
+    transform: rotate(45deg);
+    background-color: white;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    z-index: 99;
+    } */
+    
+.dropdown-content a {
+  /* border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  border-radius: 11px; */
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  }
+  
+.dropdown-profile{
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+}
+
+.dropdown-logout{
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    box-shadow: 0px 0px 1px black;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* .dropdown:hover .profile-icon {background-color: #3e8e41;} */
+/* .dropDownProfile{
+    position: sticky;
+    top: 59px;
+    left: 87.7rem; */
+    /* position: absolute; */
+    /* top: 3.7rem; */
+    /* right: 0.3rem; */
+/*  width: 111px;
+    padding: 16px 13px;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid gray;
+    z-index: 99;
+    display: none;
+}
+
+.dropDownProfile.active {
+    display: flex; 
+}
+
+.dropDownProfile::before{
+    content: '';
+    position: absolute;
+    top: -0.7rem;
+    right: 1.1rem;
+    width: 21px;
+    height: 21px;
+    transform: rotate(45deg);
+    background-color: white;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    z-index: 99;
+} */
