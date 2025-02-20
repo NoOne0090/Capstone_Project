@@ -16,7 +16,6 @@ header{
 }
 
 .header-scroll{
-    /* background-color: red; */
     background-color: white;
     color: black;
     box-shadow: 0px 0px 7px black;
@@ -133,7 +132,7 @@ header{
         margin: 0;
         padding: 11px 0px;
         /* border-bottom: 1px solid black; */
-        box-shadow: 0px 0px 1px black;
+        box-shadow: 0px 0px 2px black;
         text-align: center;
         background-color: white;
     }
@@ -141,10 +140,6 @@ header{
     .nav-link:hover{
         background-color: rgb(215, 202, 202);;
     }
-
-    /* .nav-link-home{
-        border-top: 1px solid black;
-    } */
 
     /* .nav-link a{
         font-weight: 510;
@@ -174,8 +169,6 @@ header{
         /* background-color: white; */
         color: black;
     }
-
-
 
     .navbar-part-2{
         display: none;

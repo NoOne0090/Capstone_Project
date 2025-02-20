@@ -111,7 +111,7 @@ function Navbar() {
                         Home
                       </div>
                     </Link>
-                    <Link to="/profile">
+                    <Link to="/about">
                       <div className="nav-link">
                         About Us
                       </div>
@@ -147,7 +147,7 @@ function Navbar() {
                     <Link to="/home">Home</Link>
                   </div>
                   <div className="nav-link">
-                    <Link to="/home">About Us</Link>
+                    <Link to="/about">About Us</Link>
                   </div>
                   <div className="nav-link">
                     <Link to="/home">Explore</Link>
