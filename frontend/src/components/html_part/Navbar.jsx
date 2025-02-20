@@ -81,13 +81,13 @@ function Navbar() {
                       <>
                         <div class="dropdown">
                           {/* <button class="dropbtn">Dropdown</button> */}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-person-circle profile-icon" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-person-circle profile-icon" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
                           </svg>
                           <div class="dropdown-content">
-                            <Link to="/profile">View Profile</Link>
-                            <Link onClick={handleLogout}>Log Out</Link>
+                            <Link to="/profile" className='dropdown-profile'>View Profile</Link>
+                            <Link onClick={handleLogout} className='dropdown-logout'>Log Out</Link>
                           </div>
                         </div>
                       </>
@@ -106,7 +106,7 @@ function Navbar() {
                 </div>
 
                 <div className="toggle-links toggle1 display-links">
-                    <Link to="/home">
+                    <Link to="/">
                       <div className="nav-link nav-link-home">
                         Home
                       </div>
@@ -116,44 +116,33 @@ function Navbar() {
                         About Us
                       </div>
                     </Link>
-                    <Link to="/home">
+                    <Link to="/">
                       <div className="nav-link">
                         Explore
                       </div>
                     </Link>
-                    <Link to="/home">
+                    <Link to="/">
                       <div className="nav-link">
-                        Contact Us
+                        Become Seller
                       </div>
                     </Link>
-                  {/* <div className="nav-link nav-link-home">
-                    <Link to="/home">Home</Link>
-                  </div>
-                  <div className="nav-link">
-                    <Link to="/home">About Us</Link>
-                  </div>
-                  <div className="nav-link">
-                    <Link to="/home">Explore</Link>
-                  </div>
-                  <div className="nav-link">
-                    <Link to="/home">Contact Us</Link>
-                  </div> */}
                 </div>
             </div>
 
             <div className="navbar-part-2">
                 <div className="toggle-links toggle1">
                   <div className="nav-link nav-link-home">
-                    <Link to="/home">Home</Link>
+                    <Link to="/">Home</Link>
                   </div>
                   <div className="nav-link">
                     <Link to="/about">About Us</Link>
                   </div>
                   <div className="nav-link">
-                    <Link to="/home">Explore</Link>
+                    <Link to="/">Explore</Link>
                   </div>
                   <div className="nav-link">
-                    <Link to="/home">Contact Us</Link>
+                    <Link to="/">Become Seller
+                    </Link>
                   </div>
                 </div>
                 {/* <div className="nav-search">
@@ -165,7 +154,7 @@ function Navbar() {
                     <>
                         <div class="dropdown">
                           {/* <button class="dropbtn">Dropdown</button> */}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-person-circle profile-icon" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-person-circle profile-icon" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
                           </svg>

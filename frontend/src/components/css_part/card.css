@@ -3,13 +3,16 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
     /* box-shadow: 0px 0px 7px black; */
     border-radius: 7px;
-    margin-top: 48px;
+    /* margin-top: 48px; */
     margin-right: 51px;
-    height: 100%;
+    margin-bottom: 48px;
+    /* height: 100%; */
+    height: 442px;
 }
 
 .selling-card-img{
     width: 100%;
+    height: 51%;
     object-fit: cover;
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
@@ -78,6 +81,5 @@
 }
 
 .selling-card-button button:hover {
-    /* background-color: #242424; */
     opacity: 0.7;
 }

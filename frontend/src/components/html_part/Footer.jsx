@@ -10,19 +10,19 @@ function Footer() {
           <div className="footer-col">
             <h4>Info</h4>
             <ul className="links">
-              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/service">Services</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
-              <li><Link to="/postjob">Post Job</Link></li>
+              <li><Link to="/">Services</Link></li>
+              <li><Link to="/">Contact Us</Link></li>
+              <li><Link to="/">Post Job</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Explore</h4>
             <ul className="links">
-              <li><Link to="/home/webDeveloper">Web Developer</Link></li>
-              <li><Link to="/home/logoDesign">Logo Designs</Link></li>
-              <li><Link to="/home/graphicDesign">Graphic Design</Link></li>
+              <li><Link to="/webDeveloper">Web Developer</Link></li>
+              <li><Link to="/logo">Logo Designs</Link></li>
+              <li><Link to="/graphics">Graphic Design</Link></li>
               <li><Link to="/home/webDeveloper">Web Design</Link></li>
               <li><Link to="/home/appDeveloper">App Developer</Link></li>
               <li><Link to="/home/dataScientist">Data Scientists</Link></li>
@@ -31,12 +31,12 @@ function Footer() {
           <div className="footer-col">
             <h4>Legal</h4>
             <ul className="links">
-              <li><Link to="/home">Customer Agreement</Link></li>
-              <li><Link to="/home">Privacy Policy</Link></li>
-              <li><Link to="/home">GDPR</Link></li>
-              <li><Link to="/home">Security</Link></li>
-              <li><Link to="/home">Testimonials</Link></li>
-              <li><Link to="/home">Media Kit</Link></li>
+              <li><Link to="/">Customer Agreement</Link></li>
+              <li><Link to="/">Privacy Policy</Link></li>
+              <li><Link to="/">GDPR</Link></li>
+              <li><Link to="/">Security</Link></li>
+              <li><Link to="/">Testimonials</Link></li>
+              <li><Link to="/">Media Kit</Link></li>
             </ul>
           </div>
           <div className="footer-col">

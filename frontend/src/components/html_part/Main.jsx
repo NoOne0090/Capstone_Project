@@ -15,7 +15,7 @@ function Main() {
 
       <div className="services">
         <h1>Popular Services</h1>
-        <br />
+        {/* <br /> */}
         <div className="display-services">
           <Services/>
         </div>
