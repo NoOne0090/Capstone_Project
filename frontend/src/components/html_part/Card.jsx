@@ -2,13 +2,14 @@ import React from 'react'
 import '../css_part/card.css'
 import { useNavigate } from 'react-router-dom';
 
-function Card({img, name, price, description}) {
+function Card({images, name, price, description}) {
     const navigate = useNavigate();
     const navigateInformation = () =>{
       navigate('/continue', {
         state: {
-          img: img,
+          images: images,
           name: name,
+          sellerName: 'Seller Name',
           price: price,
           description: description
         }
@@ -17,7 +18,7 @@ function Card({img, name, price, description}) {
   return (
     <>
         <div className="selling-card">
-            <img className='selling-card-img' src={img} alt="Error" onClick={navigateInformation} />
+            <img className='selling-card-img' src={images[0]} alt="Error" onClick={navigateInformation} />
             <div className="selling-card-heading">
                 <h2 onClick={navigateInformation}>{name}</h2>
                 <div className="selling-rating">

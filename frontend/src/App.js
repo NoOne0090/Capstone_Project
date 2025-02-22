@@ -74,3 +74,7 @@ function App() {
 }
 
 export default App;
+
+
+// The imported component
+// npm install react-slick
