@@ -78,3 +78,5 @@ export default App;
 
 // The imported component
 // npm install react-slick
+// npm install @coreui/react-pro
+// npm install @coreui/react @coreui/coreui

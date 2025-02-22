@@ -5,6 +5,7 @@ import SlideShow from './SlideShow';
 import time from '../img_part/time.png'
 import reload from '../img_part/reload.png'
 import greenCheck from '../img_part/greenCheck.png'
+import Comment from './Comment';
 
 function Continue() {
     const location = useLocation();
@@ -66,8 +67,8 @@ function Continue() {
                 </div>
 
                 <div className="continue-reviews">
-                    <h2>Reviews</h2>
-
+                    <h1 style={{marginBottom: '11px'}}>Reviews</h1>
+                    <Comment/>
                 </div>
                 
             </div>
