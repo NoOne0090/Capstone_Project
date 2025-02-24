@@ -31,7 +31,7 @@ function Card({images, name, price, description}) {
                     <span className="fa fa-star"></span>
                     <span className="fa fa-star"></span>
                 </div> */}
-
+                {/* Rating */}
                 <Rating rating={rating} setRating={setRating} />
             </div>
 
@@ -42,18 +42,18 @@ function Card({images, name, price, description}) {
             </div>
 
             <div className="selling-card-text" onClick={navigateInformation}>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, id provident doloribus perspiciatis dicta perferendis voluptates eum inventore qui fugit similique?</p>
-                {/* <p>{description}</p> */}
+                {/* <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, id provident doloribus perspiciatis dicta perferendis voluptates eum inventore qui fugit similique?</p> */}
+                <p>{description}</p>
             </div>
 
             {/* <br /> */}
 
-            <div className="selling-card-button">
-                <button>Contact to Seller</button>
+            <div className="selling-card-button" onClick={navigateInformation}>
+                <button>View More</button>
             </div>
         </div>
     </>
   )
 }
 
-export default Card
+export default Card;

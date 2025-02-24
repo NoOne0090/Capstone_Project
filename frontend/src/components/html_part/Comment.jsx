@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import '../css_part/comment.css'
 import Rating from './Rating';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Comment() {
     const [comment, setComment] = useState("");
@@ -8,7 +10,10 @@ function Comment() {
     const [comments, setComments] = useState([]);
   
     const onClickHandler = () => {
-        if (comment.trim() === "") return; // Prevent empty comments
+        if (comment.trim() === ""){
+            toast.warning("Comment cannot be empty!");
+            return;
+        } // Prevent empty comments
 
 
         // setComments((comments) => [...comments, comment]);
@@ -40,9 +45,10 @@ function Comment() {
         <div className="comment-flexbox">
           <h2 className="comment-heading">Comments</h2>
           <textarea
+            className="comment-input-box"
+            placeholder='Write a Comment'
             value={comment}
             onChange={onChangeHandler}
-            className="comment-input-box"
           />
           <Rating rating={rating} setRating={setRating}/>
           <button onClick={onClickHandler} className="comment-button">

@@ -28,14 +28,11 @@ export default function SlideShow({images}) {
           <img src={slideimg1} alt="Slide 1" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
         <div>
-          <img src={slideimg2} alt="Slide 2" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-        </div>
-        <div>
           <img src={slideimg3} alt="Slide 3" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div> */}
         {images.map((img, index) => (
           <>
-            <div className="slider-image" key={index} >
+            <div key={index} className="slider-image">
               <img src={img} alt="Error" />
             </div>
           </>

@@ -1,14 +1,17 @@
 .continue-container{
-    width: 90%;
-    margin: 30px auto;
-    /* padding: 30px 0; */
+    /* width: 90%; */
+    margin: 30px 0;
+    /* margin-left: 75px; */
     display: flex;
     /* gap: 50px; */
 }
 
 .continue-left{
+    /* min-width: 48%;
+    max-width: 51%; */
+    /* margin-right: 51px; */
+    margin-left: 45px;
     width: 51%;
-    /* flex: 2; */
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -66,14 +69,22 @@
 
 
 .continue-reviews{
-    margin-top: 51px;
+    margin-top: 35px;
 }
 
 .continue-right{
-    width: 49%;
+    /* width: 49%; */
+    /* width: 256px; */
+    width: 45%;
+    margin: 0px 65px;
+    display: flex;
+    justify-content: center;
+}
+
+.continue-price-box{
+    width: 100%;
     position: sticky;
     top: 85px;
-    margin: 0px 75px;
     border: 1px solid lightgray;
     padding: 21px;
     border-radius: 7px;
@@ -82,9 +93,30 @@
     gap: 24px; */
     height: max-content;
     max-height: 500px;
+
 }
 
 .continue-price, .continue-details{
     display: flex;
     justify-content: space-between;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1300px) {
+    .continue-container{
+        /* margin-left: 31px; */
+        justify-content: center;
+        margin: 0;
+        width: 96%;
+    }
+
+    .continue-left{
+        width: 90%;
+        margin: 0;
+        justify-content: center;
+    }
+    .continue-right{
+        display: none;
+    }
 }

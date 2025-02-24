@@ -66,37 +66,70 @@ function Continue() {
                     </div>                    
                 </div>
 
+                <br />
+
+                <div className="continue-price-box" style={{position: 'relative', top: '0'}}>
+                    <div className="continue-price">
+                        <h2>Price</h2>
+                        <h2>₹{price}</h2>
+                    </div>
+                    <br />
+                    <div className="continue-details">
+                        <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'140px'}}>
+                            <img src={time} alt="Error" style={{width: '21px'}} />
+                            <span>3 days delivery</span>
+                        </div>
+                        <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'107px'}}>
+                            <img src={reload} alt="Error" style={{width: '21px'}} />
+                            <span>2 Reviews</span>
+                        </div>
+                    </div>
+                    <br />
+                    <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'125px'}}>
+                        <img src={greenCheck} alt="Error" style={{width: '21px'}}/>
+                        <span>{sellerName}</span>
+                    </div>
+
+                    <div className="continue-button">
+                        <button>Continue</button>
+                    </div>
+                </div>
+
                 <div className="continue-reviews">
                     <h1 style={{marginBottom: '11px'}}>Reviews</h1>
                     <Comment/>
                 </div>
+
+                <br />
                 
             </div>
 
             <div className="continue-right">
-                <div className="continue-price">
-                    <h2>Price</h2>
-                    <h2>₹{price}</h2>
-                </div>
-                <br />
-                <div className="continue-details">
-                    <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'140px'}}>
-                        <img src={time} alt="Error" style={{width: '21px'}} />
-                        <span>3 days delivery</span>
+                <div className="continue-price-box">
+                    <div className="continue-price">
+                        <h2>Price</h2>
+                        <h2>₹{price}</h2>
                     </div>
-                    <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'107px'}}>
-                        <img src={reload} alt="Error" style={{width: '21px'}} />
-                        <span>2 Reviews</span>
+                    <br />
+                    <div className="continue-details">
+                        <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'140px'}}>
+                            <img src={time} alt="Error" style={{width: '21px'}} />
+                            <span>3 days delivery</span>
+                        </div>
+                        <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'107px'}}>
+                            <img src={reload} alt="Error" style={{width: '21px'}} />
+                            <span>2 Reviews</span>
+                        </div>
                     </div>
-                </div>
-                <br />
-                <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'125px'}}>
-                    <img src={greenCheck} alt="Error" style={{width: '21px'}}/>
-                    <span>{sellerName}</span>
-                </div>
-                {/* <br />  */}
-                <div className="continue-button">
-                    <button>Continue</button>
+                    <br />
+                    <div className="continue-item" style={{flexDirection: 'row', gap: '13px', alignItems: 'center', width:'125px'}}>
+                        <img src={greenCheck} alt="Error" style={{width: '21px'}}/>
+                        <span>{sellerName}</span>
+                    </div>
+                    {/* <br />  */}
+                    <div className="continue-button">
+                        <button>Continue</button>
+                    </div>
                 </div>
             </div>
         </div>

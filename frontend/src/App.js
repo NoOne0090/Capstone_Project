@@ -24,6 +24,7 @@ import Digital from './components/html_part/services/Digital';
 import Writing from './components/html_part/services/Writing';
 import Music from './components/html_part/services/Music';
 import Continue from './components/html_part/Continue';
+import ProductForm from './components/html_part/ProductForm';
 // import SignUp from './components/html_part/SignUp';
 // import Login from './components/html_part/Login';
 // import ResetPassword from './components/html_part/ResetPassword';
@@ -65,6 +66,7 @@ function App() {
         <Route path='/music' element={<Music/>}/>
         {/* Serivices part */}
         <Route path='/continue' element={<Continue/>}/>
+        <Route path='/logo/productform' element={<ProductForm/>}/>
       </Routes>
 
       <Footer/>
