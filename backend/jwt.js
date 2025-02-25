@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const createModel = require('./models/capProject');
 
+
 // for jwt authentication
 const jwtModel = require('./models/jwtMod');
 
@@ -15,17 +16,18 @@ require('./mongodb/connect');
 
 
 const app = express();
+module.exports = app;
 
-// Craeting Middleware
+// Creating Middleware
 app.use(express.json());
 app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send('<h1> Backend has been created successfully for freelancify website! </h1>');
+    res.send('<h1> Backend has been created successfully for freelancify website! \n Now go to /allLogins </h1>');
 })
 
-app.get('/allLogins',async (req,res)=>{
+app.get('/allLogins', async (req, res) => {
     try{
         const limit = parseInt(req.query.limit)
         const storeLogin = await createModel.find({}).limit(limit)
@@ -37,7 +39,7 @@ app.get('/allLogins',async (req,res)=>{
 })
 
 // SignUp Process
-app.post('/register',async (req, res) => {
+app.post('/register', async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
 
     const existingUser = await createModel.findOne({ email });
@@ -127,6 +129,7 @@ app.post('/reset',async (req, res)=>{
 })
 
 
+/*-------------------------------------------------------------------------------------*/
 // jwt authentication
 app.post('/login', (req, res) => {
     const {username, email, password } = req.body;
@@ -186,6 +189,7 @@ app.delete('/deleteAccount', verifyToken, async (req, res) => {
 });
 
 
+
 const port = process.env.PORT || 3500;
 app.listen(port, ()=>{
     console.log(`The app listening on port http://localhost:${port}`);
@@ -198,6 +202,7 @@ app.listen(port, ()=>{
 
 // In Post
 // Go to headers
+// go to body ---> raw
 // Key ---> Authorization
 // Value ---> bearer (copy andd paste token)
 

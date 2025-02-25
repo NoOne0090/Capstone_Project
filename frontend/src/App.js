@@ -47,6 +47,7 @@ function App() {
         <Route path='/home' element={<Main/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/about' element={<About/>}/>
+
         {/* Serivices part */}
         <Route path='/logo' element={<LogoDesign/>}/>
         <Route path='/wordpress' element={<Wordpress/>}/>
@@ -65,8 +66,9 @@ function App() {
         <Route path='/writing' element={<Writing/>}/>
         <Route path='/music' element={<Music/>}/>
         {/* Serivices part */}
+
         <Route path='/continue' element={<Continue/>}/>
-        <Route path='/logo/productform' element={<ProductForm/>}/>
+        <Route path='/productform' element={<ProductForm/>}/>
       </Routes>
 
       <Footer/>

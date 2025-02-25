@@ -1,9 +1,9 @@
 import React, { useState, useEffect }  from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Card from '../Card'
 
 function LogoDesign() {
-  const location = useLocation();
+  // const location = useLocation();
   const [products, setProducts] = useState([
     {
       images: [
@@ -25,22 +25,50 @@ function LogoDesign() {
     const storedUser = localStorage.getItem("user");
     if(storedUser){
       const user = JSON.parse(storedUser); // Convert string to object
-      // console.log("Stored User:", user);
   
       if (user.email === "ram45862@gmail.com" && user.password === "T56yu78i@") {
-        // console.log("Admin Verified!");
         setIsAdmin(true); // User is admin
       }
       else {
         setIsAdmin(false);
-        console.log("Not Admin!");
       }
     }
 
-    if (location.state?.newProduct) {
-      setProducts((prev) => [...prev, location.state.newProduct]);
-    }
-  }, [location.state]);
+    // if (location.state?.newProduct) {
+    //   setProducts((prev) =>{
+    //     // Check if the product already exists by comparing names (or another unique identifier)
+    //     const exists = prev.some((product) => product.name === location.state.newProduct.name);
+    //     if (!exists) {
+    //       return [...prev, location.state.newProduct];
+    //     }
+    //     return prev;
+    //   }) 
+    // }
+    const fetchProducts = async () => {
+        try {
+          // const response = await fetch(`http://localhost:3500/add/${category}`);
+          const response = await fetch(`http://localhost:3500/add/logo`);
+          const data = await response.json();
+          console.log(data)
+          // setProducts(data);
+          setProducts((prevProducts) => {
+            // Filter out products that already exist (based on name)
+            const newProducts = data.filter(
+                (product) => !prevProducts.some((p) => p.name === product.name)
+            );
+            return [...prevProducts, ...newProducts]; // Merge unique products
+          });
+        } 
+        catch (error) {
+            console.error("Error fetching products:", error);
+        }
+        
+    };
+
+  fetchProducts();
+  // }, [location.state]);
+  // }, [isAdmin, products]);
+  }, []);
 
   const buttonStyle = {
     backgroundColor: '#1dcf73',
@@ -61,7 +89,7 @@ function LogoDesign() {
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between',marginBottom: '5px'}}>
           <h1 style={{marginBottom: '13px'}}>Logo Design</h1>
           {isAdmin && 
-            <Link to='/logo/productform'>
+            <Link to='/productform'>
               <button style={buttonStyle}>Add More Products</button>
             </Link>
           }

@@ -13,14 +13,13 @@ function Profile() {
             setUser(JSON.parse(loggedInUser));
         } 
         else {
-            // navigate("/login"); // Redirect if not logged in
             navigate("/home"); // Redirect if not logged in
         }
     }, [navigate]);
 
     if (!user) {
         // return <p>Loading profile...</p>;
-        return <p>Rerendering to home page...</p>;
+        return <p>Re-rendering to home page...</p>;
     }
 
     const handleLogout = () => {
