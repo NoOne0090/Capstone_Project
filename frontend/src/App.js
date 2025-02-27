@@ -84,3 +84,7 @@ export default App;
 // npm install react-slick
 // npm install @coreui/react-pro
 // npm install @coreui/react @coreui/coreui
+
+
+// for drag and drop images
+// npm install react-dropzone

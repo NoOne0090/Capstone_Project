@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import '../css_part/productform.css'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+// import { useDropzone } from "react-dropzone";
 
 function ProductForm() {
     const [productName, setProductName] = useState();
     const [productPrice, setProductPrice] = useState();
     const [productDescription, setProductDescription] = useState();
     const [selectedCategory, setSelectedCategory] = useState("logo");
+    const [imageUrl, setImageUrl] = useState(""); // Store current input value
 
     const [formData, setFormData] = useState({
         images: [],
@@ -16,21 +18,53 @@ function ProductForm() {
         description: "",
     });
     
-    const handleImageChange = (e) => {
-        // const files = e.target.files;
-        const files = Array.from(e.target.files);
-        // if (files.length > 0) {
-            const imageUrls = files.map((file) => URL.createObjectURL(file));
-            console.log(imageUrls);
+    // // Handle Drag-and-Drop Images
+    // const onDrop = (acceptedFiles) => {
+    //     const imageUrls = acceptedFiles.map((file) => ({
+    //         file,
+    //         preview: URL.createObjectURL(file),
+    //     }));
+
+    //     setFormData((prev) => ({
+    //         ...prev,
+    //         images: [...prev.images, ...imageUrls], // Append new images
+    //     }));
+    // };
+
+    // Use react-dropzone
+    // const { getRootProps, getInputProps } = useDropzone({
+    //     accept: "image/*",
+    //     multiple: true,
+    //     onDrop,
+    // });
+
+
+    // const handleImageChange = (e) => {
+    //     // const files = e.target.files;
+    //     const files = Array.from(e.target.files);
+    //     // if (files.length > 0) {
+    //         const imageUrls = files.map((file) => URL.createObjectURL(file));
+    //         console.log(imageUrls);
     
-            // setFormData({ ...formData, images: imageUrls });
+    //         // setFormData({ ...formData, images: imageUrls });
+    //         setFormData((prev) => ({
+    //             ...prev,
+    //             images: [...prev.images, ...imageUrls], // Append new images
+    //         }));
+    //     // }
+
+    //     e.target.value = "";
+    // };
+
+    // Handle adding new image URL
+    const handleAddImage = () => {
+        if (imageUrl.trim() !== "") {
             setFormData((prev) => ({
                 ...prev,
-                images: [...prev.images, ...imageUrls], // Append new images
+                images: [...prev.images, imageUrl], // Append new image URL
             }));
-        // }
-
-        e.target.value = "";
+            setImageUrl(""); // Clear input field
+        }
     };
 
     const handleRemoveImage = (index) => {
@@ -52,7 +86,7 @@ function ProductForm() {
         // }));
 
         if ( formData.images.length === 0) {
-            toast.warning("Please upload the image!")
+            toast.warning("Please upload one image url!")
             return;
         }
 
@@ -61,6 +95,7 @@ function ProductForm() {
             price: productPrice,
             description: productDescription,
             images: formData.images,
+            // images: formData.images.map((img) => img.preview),
             category: selectedCategory,
         };
 
@@ -156,25 +191,41 @@ function ProductForm() {
 
                     <br /> <br />
                     <label style={{fontSize: '1.2rem', fontWeight: '550'}}>Product Image </label>
-                    <input 
+                    {/* <input 
                         type="file" 
                         multiple 
                         onChange={handleImageChange} 
                         accept="image/*" 
                         style={{marginBottom: '0'}}
-                    />
-
+                    />  */}
+                    <input 
+                        type="text" 
+                        placeholder="Enter Image URL"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}  
+                        style={{marginBottom: '0'}}
+                    /> 
+                    <button className='productform-button' type="button" onClick={handleAddImage} style={{width: '11%', padding: '8px'}}>Add Image</button>
+                    {/* Drag & Drop Area */}
+                    {/*<div {...getRootProps()} className="dropzone">
+                        <input {...getInputProps()} />
+                        <p>Drag & drop images here, or click to select files</p>
+                    </div>*/}
+                    {/* <br /> */}
                     {/* Display uploaded images with delete option */}
                     <div className="productform-image-preview">
                     {formData.images.map((img, index) => (
                         <div key={index} className="productform-preview-item">
+                            {/* <img src={img} alt="Preview" className="productform-preview-img" /> */}
                             <img src={img} alt="Preview" className="productform-preview-img" />
-                            <button className='productform-preview-button' type="button" onClick={() => handleRemoveImage(index)}>❌</button>
+                            <button type="button" className='productform-preview-button' onClick={() => handleRemoveImage(index)}>❌</button>
                         </div>
                     ))}
                     </div>
+
                     <button className='productform-button' type="submit">Submit</button>
                 </form>
+
 
 
                 <br />
